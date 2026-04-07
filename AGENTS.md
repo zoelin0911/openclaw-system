@@ -302,6 +302,32 @@ python3 ~/.openclaw/workspace/supabase/scripts/heartbeat_logger.py sync-fallback
 - `trash` > `rm` (recoverable beats gone forever)
 - When in doubt, ask.
 
+## 🔒 API Key 安全規則（2026-04-07 緊急制定）
+
+**API Key 只能存在 `.env` 檔案中，絕對不能寫在程式碼裡！**
+
+### 提交前檢查清單（強制執行）
+
+```bash
+# 1. 檢查敏感關鍵字
+grep -r "api_key\|API_KEY\|secret\|password\|token" --include="*.py" .
+
+# 2. 如果有輸出，絕對不能 commit！
+```
+
+### 正確寫法
+
+```python
+# ✅ 正確：從環境變數讀取
+API_KEY = os.getenv("API_KEY")
+
+# ❌ 錯誤：直接寫入
+API_KEY = "sk-123456..."
+```
+
+### 詳見
+[API_KEY_SAFETY_RULES.md](https://github.com/zoelin0911/openclaw-system/blob/main/API_KEY_SAFETY_RULES.md)
+
 ## 🔒 技能安裝安全協議（強制執行）
 
 **安裝任何技能前必須執行以下流程**：
