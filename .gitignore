@@ -1,0 +1,30 @@
+# Browser login data (sensitive!)
+x_login/
+Data/
+x_auth.json
+x_*.json
+x_*.png
+chrome_cookies.json
+
+# Environment files
+.env
+.env.*
+
+# Log files
+*.log
+/tmp/
+
+# OS files
+.DS_Store
+
+# AI model files
+*.safetensors
+*.ckpt
+
+# Photos
+*.jpg
+*.png
+photos/
+
+# Clawhub cache
+.clawhub/
